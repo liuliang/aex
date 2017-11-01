@@ -36,6 +36,16 @@ module Aex
     post 'getMyBalance'
   end
   
+  def self.buy_limit( currency_pair, quantity, rate )
+    mk_type, coinname = currency_pair.upcase.split('_')
+    submit_order 1, mk_type, rate, quantity, coinname 
+  end
+
+  def self.sell_limit( currency_pair, quantity, rate )
+    mk_type, coinname = currency_pair.upcase.split('_')
+    submit_order 2, mk_type, rate, quantity, coinname 
+  end
+  
   def self.submit_order(type, mk_type, price, amount, coinname)
     post 'submitOrder', type: type, mk_type: mk_type, price: price, amount: amount, coinname: coinname
   end
