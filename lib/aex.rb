@@ -11,7 +11,7 @@ module Aex
   end
 
   class Configuration
-    attr_accessor :key, :secret, :uid
+    attr_accessor :key, :secret, :uid, :gateway
 
     def intialize
       @key    = ''
@@ -65,7 +65,7 @@ module Aex
   protected
 
   def self.resource
-    @@resouce ||= RestClient::Resource.new( 'http://api.aex.com' )
+    @@resouce ||= RestClient::Resource.new( self.gateway || 'https://api.aex.com' )
   end
 
   def self.get( command, params = {} )
