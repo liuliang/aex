@@ -65,7 +65,7 @@ module Aex
   protected
 
   def self.resource
-    @@resouce ||= RestClient::Resource.new( self.gateway || 'https://api.aex.com' )
+    @@resouce ||= RestClient::Resource.new( self.configuration.gateway || 'https://api.aex.com' )
   end
 
   def self.get( command, params = {} )
